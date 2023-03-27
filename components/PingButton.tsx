@@ -1,5 +1,9 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+<<<<<<< HEAD
 import * as Web3 from '@solana/web3.js'
+=======
+import * as web3 from '@solana/web3.js'
+>>>>>>> 513ef9ce67793f9f73eb8f5d114b0354515f7862
 import { FC } from 'react'
 import styles from '../styles/PingButton.module.css'
 
@@ -11,6 +15,7 @@ export const PingButton: FC = () => {
 	const { publicKey, sendTransaction } = useWallet();
 
 	const onClick = () => {
+<<<<<<< HEAD
 		if (!connection || !publicKey) { 
 			alert("Please connect your wallet first lol")
 			return
@@ -22,16 +27,36 @@ export const PingButton: FC = () => {
 			keys: [
 				{
 					pubkey: PROGRAM_DATA_PUBLIC_KEY,
+=======
+		if (!connection || !publicKey) { return }
+
+		const programId = new web3.PublicKey(PROGRAM_ID)
+		const programDataAccount = new web3.PublicKey(DATA_ACCOUNT_PUBKEY)
+		const transaction = new web3.Transaction()
+
+		const instruction = new web3.TransactionInstruction({
+			keys: [
+				{
+					pubkey: programDataAccount,
+>>>>>>> 513ef9ce67793f9f73eb8f5d114b0354515f7862
 					isSigner: false,
 					isWritable: true
 				},
 			],
+<<<<<<< HEAD
 			programId: PROGRAM_ID,
+=======
+			programId
+>>>>>>> 513ef9ce67793f9f73eb8f5d114b0354515f7862
 		});
 
 		transaction.add(instruction)
 		sendTransaction(transaction, connection).then(sig => {
+<<<<<<< HEAD
 			console.log(`Explorer URL: https://explorer.solana.com/tx/${sig}?cluster=devnet`)
+=======
+			console.log(sig)
+>>>>>>> 513ef9ce67793f9f73eb8f5d114b0354515f7862
 		})
 	}
 
